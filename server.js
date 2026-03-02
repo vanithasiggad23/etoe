@@ -1,3 +1,10 @@
+const fs = require("fs");
+const uploadDir = path.join(__dirname, "uploads");
+
+// Ensure uploads folder exists
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
