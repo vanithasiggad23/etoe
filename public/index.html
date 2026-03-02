@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ETOE Production Planner</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="header">
+
+    <!-- LOGO -->
+    <div class="logo-area">
+        <img src="logo.jpeg" class="logo">
+    </div>
+
+    <!-- CENTER TITLE -->
+    <div class="title">
+        ETOE Harness Production Planner
+    </div>
+
+</div>
+
+
+<!-- ================= MAIN ================= -->
+<div class="main">
+
+<!-- ================= KPI ================= -->
+<div class="kpis">
+
+<div class="kpi">
+<div>Time / Unit</div>
+<div id="k_unit" class="v">—</div>
+</div>
+
+<div class="kpi">
+<div>Total Hours</div>
+<div id="k_hours" class="v">—</div>
+</div>
+
+<div class="kpi">
+<div>Days</div>
+<div id="k_days" class="v">—</div>
+</div>
+
+<div class="kpi">
+<div>End Date</div>
+<div id="k_end" class="v">—</div>
+</div>
+
+</div>
+
+
+<!-- ================= PANELS ================= -->
+<div class="panel-wrapper">
+
+<!-- ================= CALCULATOR ================= -->
+<div class="card calculator">
+
+<div class="card-header">
+Production Inputs
+</div>
+
+<div class="card-body">
+
+<!-- ROW 1 -->
+<div class="form-row">
+<div class="form-item">
+<label>Wire Length</label>
+<input id="length" type="number">
+</div>
+
+<div class="form-item">
+<label>Harness Quantity</label>
+<input id="qty" type="number">
+</div>
+</div>
+
+<!-- ROW 2 -->
+<div class="form-row">
+<div class="form-item">
+<label>No. of Terminals</label>
+<input id="terminals" type="number">
+</div>
+
+<div class="form-item">
+<label>No. of Splices</label>
+<input id="splices" type="number">
+</div>
+</div>
+
+<!-- ROW 3 -->
+<div class="form-row">
+<div class="form-item">
+<label>No. of Branches</label>
+<input id="branches" type="number">
+</div>
+
+<div class="form-item">
+<label>Number of Wires</label>
+<input id="wires" type="number">
+</div>
+</div>
+
+<!-- ROW 4 -->
+<div class="form-row">
+<div class="form-item">
+<label>Manpower</label>
+<input id="manpower" type="number" value="1">
+</div>
+
+<div class="form-item">
+<label>Cable Bundling</label>
+<input id="bundling" type="number">
+</div>
+</div>
+
+<!-- ROW 5 -->
+<div class="form-row">
+<div class="form-item">
+<label>No. of Labels</label>
+<input id="labels" type="number">
+</div>
+
+<div class="form-item">
+<label>No. of Connectors</label>
+<input id="connectors" type="number">
+</div>
+</div>
+
+<!-- ROW 6 -->
+<div class="form-row">
+<div class="form-item">
+<label>Start Date</label>
+<input id="date" type="date">
+</div>
+
+<div class="form-item">
+<label>Shift Hours</label>
+<input id="shift" value="7">
+</div>
+</div>
+
+<button class="full-btn" onclick="calculate()">
+Calculate Plan
+</button>
+
+</div>
+</div>
+
+
+<!-- ================= REFERENCE ================= -->
+<div class="card reference">
+
+<div class="card-header">
+Reference Excel Files
+</div>
+
+<div class="card-body">
+
+<input type="file" id="refFile" accept=".xls,.xlsx">
+
+<button onclick="uploadReference()">
+Upload
+</button>
+
+<table class="ref-table">
+<tbody id="referenceList">
+<tr>
+<td colspan="2">No Files Uploaded</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
