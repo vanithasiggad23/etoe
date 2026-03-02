@@ -1,19 +1,23 @@
-const fs = require("fs");
-const uploadDir = path.join(__dirname, "uploads");
-
-// Ensure uploads folder exists
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-}
+// ===========================
+// IMPORTS
+// ===========================
 require('dotenv').config();
+const fs = require("fs");
+const path = require("path");
 const express = require('express');
 const mongoose = require('mongoose');
 const multer = require("multer");
 const cors = require("cors");
-const path = require("path");
-const fs = require("fs");
 
 const app = express();
+
+// ===========================
+// ENSURE UPLOADS FOLDER EXISTS
+// ===========================
+const uploadDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 // ===========================
 // MIDDLEWARE
@@ -50,9 +54,7 @@ const Reference = mongoose.model("Reference", ReferenceSchema);
 // ===========================
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const dir = "uploads";
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir);
-    cb(null, dir);
+    cb(null, uploadDir); // already ensured folder exists
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "_" + file.originalname);
@@ -87,7 +89,7 @@ app.get("/references", async (req, res) => {
 // VIEW FILE INLINE
 // ===========================
 app.get("/view/:filename", (req, res) => {
-  const filePath = path.join(__dirname, "uploads", req.params.filename);
+  const filePath = path.join(uploadDir, req.params.filename);
   if (fs.existsSync(filePath)) {
     res.sendFile(filePath);
   } else {
